@@ -1,10 +1,12 @@
 import Wrapper from '../assets/wrappers/ProjectInfo'
 
-const ProjectInfo = ({ icon, text }) => {
+const ProjectInfo = ({ icon, text, underline }) => {
   return (
     <Wrapper>
       <span className='icon'>{icon}</span>
-      <span className='text'>{text}</span>
+      {underline ? <span className='underline'>{text}</span>:
+        <span className='text'>{text}</span>}
+     
     </Wrapper>
   )
 }

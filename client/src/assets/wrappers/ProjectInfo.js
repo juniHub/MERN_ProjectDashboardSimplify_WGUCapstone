@@ -17,6 +17,16 @@ const Wrapper = styled.div`
   .text {
     text-transform: capitalize;
     letter-spacing: var(--letterSpacing);
+   
+   
+  }
+
+  .underline {
+    text-transform: capitalize;
+    letter-spacing: var(--letterSpacing);
+    text-decoration: underline wavy #9656a1;
+  
+   
   }
 `
 export default Wrapper

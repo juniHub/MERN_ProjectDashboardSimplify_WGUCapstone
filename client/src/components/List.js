@@ -13,10 +13,10 @@ const List = ({
 }) => {
   
   let updatedDate = moment(updatedAt)
-  updatedDate = updatedDate.format('MMM Do, YYYY')
+  updatedDate = updatedDate.local().format('MMM Do, YYYY')
 
   let deadlineDate = moment(deadline)
-  deadlineDate = deadlineDate.format('ddd, MMM Do YYYY, h:mm:ss a')
+  deadlineDate = deadlineDate.local().format('ddd, MMM Do YYYY, h:mm:ss a')
 
 
 

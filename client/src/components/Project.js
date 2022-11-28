@@ -1,6 +1,7 @@
 
 //import momentTimezone from "moment-timezone"
 import moment from "moment"
+
 import { FaRegClipboard, FaRegCalendarCheck, FaCalendarAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useAppContext } from '../context/appContext'
@@ -20,10 +21,10 @@ const Project = ({
   const { setEditProject, deleteProject } = useAppContext()
 
   let updatedDate = moment(updatedAt)
-  updatedDate = updatedDate.format('MMM Do, YYYY')
+  updatedDate = updatedDate.local().format('MMM Do, YYYY')
 
   let deadlineDate = moment(deadline)
-  deadlineDate = deadlineDate.format('ddd, MMM Do YYYY, h:mm:ss a')
+  deadlineDate = deadlineDate.local().format('ddd, MMM Do YYYY, h:mm:ss a')
 
 
 
@@ -40,7 +41,7 @@ const Project = ({
       <div className='content'>
         <div className='content-center'>
         
-          <ProjectInfo icon={<FaRegCalendarCheck />} text={`Deadline: ${deadlineDate}`} />
+          <ProjectInfo icon={<FaRegCalendarCheck />} underline={true} text={`Deadline: ${deadlineDate}`} />
           
           <ProjectInfo icon={<FaRegClipboard />} text={`Note: ${note}`} />
 
