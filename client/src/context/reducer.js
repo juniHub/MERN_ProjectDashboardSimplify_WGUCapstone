@@ -17,6 +17,9 @@ import {
   CREATE_PROJECT_ERROR,
   GET_PROJECTS_BEGIN,
   GET_PROJECTS_SUCCESS,
+
+  GET_SINGLE_PROJECT,
+
   SET_EDIT_PROJECT,
   DELETE_PROJECT_BEGIN,
   EDIT_PROJECT_BEGIN,
@@ -132,6 +135,7 @@ const reducer = (state, action) => {
       ...initialState,
     }
   }
+
   if (action.type === CREATE_PROJECT_BEGIN) {
     return { ...state, isLoading: true }
   }
@@ -154,6 +158,7 @@ const reducer = (state, action) => {
       alertText: action.payload.msg,
     }
   }
+
   if (action.type === GET_PROJECTS_BEGIN) {
     return { ...state, isLoading: true, showAlert: false }
   }
@@ -166,11 +171,36 @@ const reducer = (state, action) => {
       numOfPages: action.payload.numOfPages,
     }
   }
+
+  
+  if (action.type === GET_SINGLE_PROJECT) {
+
+    const project = state.projects.find((project) => project._id === action.payload.id)
+    const {  _id, title, leader, note, deadline, status, updatedAt } = project
+    return {
+      
+      ...state,
+      isEditing: true,
+      editProjectId: _id,
+      title,
+      leader,
+      note,
+      deadline,
+      status,
+      updatedAt,
+    
+    }
+  }
+
+  
+
+
   if (action.type === SET_EDIT_PROJECT) {
     const project = state.projects.find((project) => project._id === action.payload.id)
     const { _id, title, leader, note, deadline, status } = project
     return {
       ...state,
+
       isEditing: true,
       editProjectId: _id,
       title,
@@ -180,9 +210,7 @@ const reducer = (state, action) => {
       status,
     }
   }
-  if (action.type === DELETE_PROJECT_BEGIN) {
-    return { ...state, isLoading: true }
-  }
+
   if (action.type === EDIT_PROJECT_BEGIN) {
     return {
       ...state,
@@ -198,6 +226,7 @@ const reducer = (state, action) => {
       alertText: 'Project Updated!',
     }
   }
+
   if (action.type === EDIT_PROJECT_ERROR) {
     return {
       ...state,
@@ -207,6 +236,15 @@ const reducer = (state, action) => {
       alertText: action.payload.msg,
     }
   }
+
+
+  
+
+  if (action.type === DELETE_PROJECT_BEGIN) {
+    return { ...state, isLoading: true }
+  }
+
+
   if (action.type === SHOW_STATS_BEGIN) {
     return {
       ...state,
@@ -227,7 +265,9 @@ const reducer = (state, action) => {
   if (action.type === CLEAR_FILTERS) {
     return {
       ...state,
-      search: '',
+      searchTitle: '',
+      searchLeader: '',
+      searchNote: '',
       searchStatus: 'all',
       sort: 'latest updated',
     }

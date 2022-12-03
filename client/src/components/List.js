@@ -1,16 +1,23 @@
 import moment from "moment"
 import Wrapper from '../assets/wrappers/ListWrapper'
 import ListRow from './ListRow'
+import { useAppContext } from '../context/appContext'
+import { Link } from 'react-router-dom'
 
 const List = ({
  
+
+  _id,
   title,
   leader,
   note,
   deadline,
   updatedAt,
   status,
+
 }) => {
+
+  const {  getSingleProject} = useAppContext()
   
   let updatedDate = moment(updatedAt)
   updatedDate = updatedDate.local().format('MMM Do, YYYY')
@@ -25,13 +32,22 @@ const List = ({
     <div className='list'>
        <div className='list-center'>
        
-        
-        <ListRow  text={title}/>
+          <Link
+
+              className='link list-link'
+              to={`/projects/${_id}`}
+             
+              onClick={() => getSingleProject(_id)}
+            >
+
+          {title}
+
+          </Link> 
+       
         <ListRow  text={leader} />
         <ListRow  text={status}/>
         <ListRow  text={deadlineDate}/>
-      
-        <ListRow  text={note} />
+        <ListRow  text={note}/>
         <ListRow  text={updatedDate} />
   
       

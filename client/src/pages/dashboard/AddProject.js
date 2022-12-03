@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { FormRow, FormRowSelect, FormRowArea, Alert } from '../../components'
 import { useAppContext } from '../../context/appContext'
 import Wrapper from '../../assets/wrappers/DashboardFormPage'
@@ -41,6 +43,14 @@ const AddProject = () => {
 
   return (
     <Wrapper>
+      
+         <Link
+              to='/'
+              className='btn global-btn'
+            >
+              Back Home
+          </Link>
+          
       <form className='form'>
         <h3>{isEditing ? 'edit project' : 'add project'}</h3>
         {showAlert && <Alert />}
@@ -72,17 +82,7 @@ const AddProject = () => {
             handleChange={handleProjectInput}
           />
 
-         
-
-         
-        
-
-  
-
-
-
-
-          {/* status */}
+           {/* status */}
           <FormRowSelect
             name='status'
             value={status}

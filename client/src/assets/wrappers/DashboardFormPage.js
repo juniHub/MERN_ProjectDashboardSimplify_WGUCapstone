@@ -12,6 +12,7 @@ const Wrapper = styled.section`
   
   .form {
     margin: 0;
+    margin-top: 2rem;
     border-radius: 0;
     box-shadow: none;
     padding: 0;
@@ -45,6 +46,9 @@ const Wrapper = styled.section`
       height: 35px;
     }
   }
+
+ 
+
   .clear-btn {
     background: var(--grey-500);
   }

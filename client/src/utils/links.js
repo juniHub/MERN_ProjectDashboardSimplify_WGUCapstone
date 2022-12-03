@@ -9,6 +9,7 @@ const links = [
   { id: 3, text: 'add project', path: 'add-project', icon: <FaRegCalendarPlus /> },
   { id: 4, text: 'profile', path: 'profile', icon: <ImProfile /> },
   { id: 5, text: 'project list', path: 'project-list', icon: <FaRegListAlt  /> },
+  
 ]
 
 export default links

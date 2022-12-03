@@ -19,16 +19,16 @@ const Wrapper = styled.article`
     }
   }
   .main-icon {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     display: grid;
     place-items: center;
-    background: var(--primary-500);
+    background: var(--grey-200);
     border-radius: var(--borderRadius);
     font-size: 1.5rem;
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--black);
     margin-right: 2rem;
   }
   .info {
@@ -61,7 +61,7 @@ const Wrapper = styled.article`
   }
   .content {
     padding: 1rem 1.5rem;
-    background-color: #fef6e4;
+ 
    
   }
   .content-center {
@@ -91,17 +91,27 @@ const Wrapper = styled.article`
   footer {
     margin-top: 1rem;
   }
+
+
   .edit-btn,
   .delete-btn {
     letter-spacing: var(--letterSpacing);
     cursor: pointer;
     height: 30px;
   }
+
+
+
+
+
   .edit-btn {
     color: var(--green-dark);
     background: var(--green-light);
     margin-right: 0.5rem;
   }
+
+
+
   .delete-btn {
     color: var(--red-dark);
     background: var(--red-light);

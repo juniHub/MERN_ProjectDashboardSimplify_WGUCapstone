@@ -13,16 +13,23 @@ const ListContainer = () => {
     isLoading,
     page,
     totalProjects,
-    search,
+
+    searchTitle,
+    searchLeader,
+    searchNote,
+
     searchStatus,
   
     sort,
     numOfPages,
   } = useAppContext()
+
   useEffect(() => {
     getProjects()
     // eslint-disable-next-line
-  }, [page, search, searchStatus,  sort])
+  }, [page, searchTitle, searchLeader, searchNote, searchStatus,  sort])
+
+  
   if (isLoading) {
     return <Loading center />
   }
@@ -41,10 +48,17 @@ const ListContainer = () => {
         {totalProjects} Project{projects.length > 1 && 's'} found
       </h5>
 
-     <LabelRow/>
+    
+         <LabelRow/>
 
         {projects.map((project) => {
-          return <List key={project._id} {...project} />
+          return (
+
+       
+          <List key={project._id} {...project} />
+
+    
+          )
         })}
      
    

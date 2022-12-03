@@ -5,9 +5,12 @@ import Wrapper from '../assets/wrappers/SearchContainer'
 const SearchContainer = () => {
   const {
     isLoading,
-    search,
-    searchStatus,
 
+    searchTitle,
+    searchLeader,
+    searchNote,
+
+    searchStatus,
     sort,
     sortOptions,
     handleChange,
@@ -32,11 +35,30 @@ const SearchContainer = () => {
           {/* search position */}
 
           <FormRow
+            labelText='Search Title'
             type='text'
-            name='search'
-            value={search}
+            name='searchTitle'
+            value={searchTitle}
             handleChange={handleSearch}
           />
+
+          <FormRow
+            labelText='Search Leader'
+            type='text'
+            name='searchLeader'
+            value={searchLeader}
+            handleChange={handleSearch}
+          />
+
+          <FormRow
+            labelText='Search Note'
+            type='text'
+            name='searchNote'
+            value={searchNote}
+            handleChange={handleSearch}
+          />
+
+
           {/* search by status */}
           <FormRowSelect
             labelText='status'

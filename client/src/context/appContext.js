@@ -21,6 +21,9 @@ import {
   CREATE_PROJECT_ERROR,
   GET_PROJECTS_BEGIN,
   GET_PROJECTS_SUCCESS,
+
+  GET_SINGLE_PROJECT,
+ 
   SET_EDIT_PROJECT,
   DELETE_PROJECT_BEGIN,
   EDIT_PROJECT_BEGIN,
@@ -38,6 +41,7 @@ const user = localStorage.getItem('user')
 
 
 const initialState = {
+
   isLoading: false,
   showAlert: false,
   alertText: '',
@@ -53,13 +57,17 @@ const initialState = {
   deadline: Date.now,
   statusOptions: ['finished', 'cancelled', 'working'],
   status: 'working',
+  updatedAt: Date.now,
+
   projects: [],
   totalProjects: 0,
   numOfPages: 1,
   page: 1,
   stats: {},
   monthlyProjects: [],
-  search: '',
+  searchTitle: '',
+  searchLeader: '',
+  searchNote: '',
   searchStatus: 'all',
   sort: 'latest updated',
   sortOptions: ['latest updated', 'oldest updated', 'nearest deadline', 'furthest deadline'],
@@ -74,6 +82,7 @@ const AppProvider = ({ children }) => {
   const authFetch = axios.create({
     baseURL: '/api/v1',
   })
+
   // request
 
   authFetch.interceptors.request.use(
@@ -85,6 +94,7 @@ const AppProvider = ({ children }) => {
       return Promise.reject(error)
     }
   )
+
   // response
 
   authFetch.interceptors.response.use(
@@ -179,10 +189,13 @@ const AppProvider = ({ children }) => {
   const clearValues = () => {
     dispatch({ type: CLEAR_VALUES })
   }
+
+
   const createProject = async () => {
     dispatch({ type: CREATE_PROJECT_BEGIN })
     try {
       const { title, leader, note, deadline, status } = state
+    
       await authFetch.post('/projects', {
         title,
         leader,
@@ -203,16 +216,26 @@ const AppProvider = ({ children }) => {
   }
 
   const getProjects = async () => {
-    const { page, search, searchStatus, sort } = state
+    const { page, searchTitle, searchLeader, searchNote, searchStatus, sort } = state
 
     let url = `/projects?page=${page}&status=${searchStatus}&sort=${sort}`
 
  
-    if (search) {
-      url = url + `&search=${search}`
+    if (searchTitle) {
+      url = url + `&searchTitle=${searchTitle}`
       
     }
 
+    if (searchLeader) {
+      url = url + `&searchLeader=${searchLeader}`
+      
+    }
+
+    if (searchNote) {
+      url = url + `&searchNote=${searchNote}`
+      
+    }
+ 
  
     dispatch({ type: GET_PROJECTS_BEGIN })
     try {
@@ -233,9 +256,16 @@ const AppProvider = ({ children }) => {
     clearAlert()
   }
 
+  const getSingleProject = async (id) => {
+   
+    dispatch({ type: GET_SINGLE_PROJECT, payload: { id } })
+
+}
+
   const setEditProject = (id) => {
     dispatch({ type: SET_EDIT_PROJECT, payload: { id } })
   }
+
   
   const editProject = async () => {
     dispatch({ type: EDIT_PROJECT_BEGIN })
@@ -260,6 +290,8 @@ const AppProvider = ({ children }) => {
     }
     clearAlert()
   }
+
+
   const deleteProject = async (projectId) => {
     dispatch({ type: DELETE_PROJECT_BEGIN })
     try {
@@ -308,9 +340,13 @@ const AppProvider = ({ children }) => {
         clearValues,
         createProject,
         getProjects,
+
+        getSingleProject,
+    
+
         setEditProject,
-        deleteProject,
         editProject,
+        deleteProject,
         showStats,
         clearFilters,
         changePage,

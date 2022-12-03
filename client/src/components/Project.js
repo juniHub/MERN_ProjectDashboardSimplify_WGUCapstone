@@ -2,7 +2,7 @@
 //import momentTimezone from "moment-timezone"
 import moment from "moment"
 
-import { FaRegClipboard, FaRegCalendarCheck, FaCalendarAlt } from 'react-icons/fa'
+import { FaRegCalendarCheck, FaUser} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useAppContext } from '../context/appContext'
 import Wrapper from '../assets/wrappers/Project'
@@ -13,12 +13,15 @@ const Project = ({
   _id,
   title,
   leader,
-  note,
+ 
   deadline,
   updatedAt,
   status,
+ 
+
 }) => {
-  const { setEditProject, deleteProject } = useAppContext()
+  const { setEditProject, deleteProject, getSingleProject} = useAppContext()
+
 
   let updatedDate = moment(updatedAt)
   updatedDate = updatedDate.local().format('MMM Do, YYYY')
@@ -27,29 +30,52 @@ const Project = ({
   deadlineDate = deadlineDate.local().format('ddd, MMM Do YYYY, h:mm:ss a')
 
 
-
   return (
     <Wrapper>
       <header>
-        <div className='main-icon'>{title.charAt(0)}</div>
+
+        <div className='main-icon'>
+        <Link
+
+              className='link'
+              to={`/projects/${_id}`}
+             
+              onClick={() => getSingleProject(_id)}
+            >
+        {title.charAt(0)}
+
+        </Link>
+        
+        </div>
         <div className='info'>
-          <h5>{title}</h5>
-          <p>Leader: {leader}</p>
+          
+         <h5>{title}</h5>
+         <p>Updated: {updatedDate}</p>
+        
           <div className={`status ${status}`}>{status}</div>
         </div>
       </header>
       <div className='content'>
         <div className='content-center'>
-        
-          <ProjectInfo icon={<FaRegCalendarCheck />} underline={true} text={`Deadline: ${deadlineDate}`} />
-          
-          <ProjectInfo icon={<FaRegClipboard />} text={`Note: ${note}`} />
 
-          <ProjectInfo icon={<FaCalendarAlt />} text={`Updated: ${updatedDate}`} />
+          <ProjectInfo icon={<FaUser />} text={`Leader: ${leader}`} />
+        
+          <ProjectInfo icon={<FaRegCalendarCheck />} text={`Deadline: ${deadlineDate}`} />
+          
+          
   
         </div>
         <footer>
           <div className='actions'>
+
+          <Link
+              to={`/projects/${_id}`}
+              className='btn global-btn'
+              onClick={() => getSingleProject(_id)}
+            >
+              Read more
+            </Link>
+        
             <Link
               to='/add-project'
               className='btn edit-btn'

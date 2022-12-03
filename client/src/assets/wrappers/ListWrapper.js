@@ -32,6 +32,11 @@ const Wrapper = styled.section`
  
   }
 
+  .list-link{
+    margin-bottom: 0;
+    border: solid 1px #000;
+    padding: 0.2rem;
+  }
 
   .clear-btn {
     background: var(--grey-500);
@@ -39,8 +44,7 @@ const Wrapper = styled.section`
   .clear-btn:hover {
     background: var(--black);
   }
-
-
+  
 
   @media (min-width: 320px) {
  

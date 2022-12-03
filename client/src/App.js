@@ -6,8 +6,11 @@ import {
   SharedLayout,
   Stats,
   AddProject,
-  ProjectList
+  ProjectList,
+ 
 } from './pages/dashboard'
+
+import SingleProject from './components/SingleProject'
 
 function App() {
   return (
@@ -24,6 +27,7 @@ function App() {
           <Route index element={<Stats />} />
           <Route path='all-projects' element={<AllProjects />} />
           <Route path='add-project' element={<AddProject />} />
+          <Route path='/projects/:id' element={<SingleProject />} />
           <Route path='project-list' element={<ProjectList />} />
           <Route path='profile' element={<Profile />} />
         </Route>

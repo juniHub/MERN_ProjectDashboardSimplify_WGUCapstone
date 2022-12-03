@@ -18,8 +18,10 @@ const createProject = async (req, res) => {
   const project = await Project.create(req.body)
   res.status(StatusCodes.CREATED).json({ project })
 }
+
+
 const getAllProjects = async (req, res) => {
-  const { status, sort, search } = req.query
+  const { status, sort, searchTitle, searchLeader, searchNote } = req.query
 
   const queryObject = {
     createdBy: req.user.userId,
@@ -30,8 +32,20 @@ const getAllProjects = async (req, res) => {
     queryObject.status = status
   }
  
-  if (search) {
-    queryObject.title = { $regex: search, $options: 'i' }
+  if (searchTitle) {
+    queryObject.title = { $regex: searchTitle, $options: 'i' }
+ 
+  }
+
+   
+  if (searchLeader) {
+    queryObject.leader = { $regex: searchLeader, $options: 'i' }
+   
+  }
+
+  if (searchNote) {
+    queryObject.note = { $regex: searchNote, $options: 'i' }
+   
   }
 
 
@@ -69,6 +83,7 @@ const getAllProjects = async (req, res) => {
   res.status(StatusCodes.OK).json({ projects, totalProjects, numOfPages })
 }
 
+
 const updateProject = async (req, res) => {
   const { id: projectId } = req.params
   const { title, leader } = req.body
@@ -92,6 +107,7 @@ const updateProject = async (req, res) => {
 
   res.status(StatusCodes.OK).json({ updatedProject })
 }
+
 
 const deleteProject = async (req, res) => {
   const { id: projectId } = req.params
