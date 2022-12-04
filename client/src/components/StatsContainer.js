@@ -21,8 +21,8 @@ const StatsContainer = () => {
       title: 'Projects Finished',
       count: stats.finished || 0,
       icon: <FaRegCalendarCheck />,
-      color: '#9656a1',
-      bcg: '#fef6e4',
+      color: '#00ebc7',
+      bcg: ' #fef6e4',
     },
     {
       title: 'Projects Cancelled',
