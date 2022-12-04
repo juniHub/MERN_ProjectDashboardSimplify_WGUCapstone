@@ -3,8 +3,6 @@ import { useEffect } from 'react'
 import Loading from './Loading'
 import Project from './Project'
 
-
-
 import Wrapper from '../assets/wrappers/ProjectsContainer'
 import PageBtnContainer from './PageBtnContainer'
 
@@ -12,6 +10,7 @@ import PageBtnContainer from './PageBtnContainer'
 const ProjectsContainer = () => {
   const {
 
+  
     getProjects,
     projects,
     isLoading,

@@ -192,8 +192,6 @@ const reducer = (state, action) => {
     }
   }
 
-  
-
 
   if (action.type === SET_EDIT_PROJECT) {
     const project = state.projects.find((project) => project._id === action.payload.id)
@@ -238,12 +236,9 @@ const reducer = (state, action) => {
   }
 
 
-  
-
   if (action.type === DELETE_PROJECT_BEGIN) {
     return { ...state, isLoading: true }
   }
-
 
   if (action.type === SHOW_STATS_BEGIN) {
     return {
@@ -252,6 +247,7 @@ const reducer = (state, action) => {
       showAlert: false,
     }
   }
+
   if (action.type === SHOW_STATS_SUCCESS) {
     return {
       ...state,

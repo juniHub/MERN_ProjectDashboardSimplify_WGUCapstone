@@ -302,7 +302,7 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  //status report page
+  //status report homepage
   const showStats = async () => {
     dispatch({ type: SHOW_STATS_BEGIN })
     try {

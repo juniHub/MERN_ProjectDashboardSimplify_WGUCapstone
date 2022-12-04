@@ -125,7 +125,7 @@ const deleteProject = async (req, res) => {
   res.status(StatusCodes.OK).json({ msg: 'Success! Project removed' })
 }
 
-//for report status
+//status group count
 const showStats = async (req, res) => {
   let stats = await Project.aggregate([
     { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
@@ -143,17 +143,20 @@ const showStats = async (req, res) => {
     cancelled: stats.cancelled || 0,
   }
 
+  //monthly count
   let monthlyProjects = await Project.aggregate([
     { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
     {
       $group: {
-        _id: { year: { $year: '$createdAt' }, month: { $month: '$createdAt' } },
+        _id: { year: { $year: '$updatedAt' }, month: { $month: '$updatedAt' } },
         count: { $sum: 1 },
       },
     },
     { $sort: { '_id.year': -1, '_id.month': -1 } },
-    { $limit: 6 },
+    { $limit: 12 },
   ])
+
+
   monthlyProjects = monthlyProjects
     .map((item) => {
       const {
