@@ -12,10 +12,13 @@ const AddProject = () => {
     displayAlert,
     title,
     leader,
+    address,
+    type,
     note,
     deadline,
     status,
     statusOptions,
+    typeOptions,
     handleChange,
     clearValues,
     createProject,
@@ -56,10 +59,9 @@ const AddProject = () => {
         {showAlert && <Alert />}
         <div className='form-center'>
           {/* title */}
-
           <FormRowArea
             type='text'
-            labelText='Project Title'
+            labelText='Project Title/Customer Name'
             name='title'
             value={title}
             handleChange={handleProjectInput}
@@ -67,11 +69,27 @@ const AddProject = () => {
           {/* leader */}
           <FormRowArea
             type='text'
-            labelText='Project Leader'
+            labelText='Project Manager'
             name='leader'
             value={leader}
             handleChange={handleProjectInput}
           />
+            {/* address */}
+            <FormRowArea
+            type='text'
+            labelText='Project Address'
+            name='address'
+            value={address}
+            handleChange={handleProjectInput}
+          />
+          {/* type */}
+            <FormRowSelect
+            name='type'
+            value={type}
+            handleChange={handleProjectInput}
+            list={typeOptions}
+          />
+
 
           {/* Note  */}
           <FormRowArea

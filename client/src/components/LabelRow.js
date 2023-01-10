@@ -13,9 +13,11 @@ const LabelRow = () => {
       
             <ListRow  text="Title"/>
             <ListRow  text="Leader" />
+            <ListRow  text="Address" />
+            <ListRow  text="Type" />
             <ListRow  text="Status"/>
             <ListRow  text="Deadline"/>
-            <ListRow  text="Notes"/>
+         
             <ListRow  text="Updated" />
       
           

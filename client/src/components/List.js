@@ -10,10 +10,12 @@ const List = ({
   _id,
   title,
   leader,
-  note,
+  address,
+
   deadline,
   updatedAt,
   status,
+  type,
 
 
 }) => {
@@ -46,9 +48,11 @@ const List = ({
           </Link> 
        
         <ListRow  text={leader} />
+        <ListRow  text={address} />
+        <ListRow  text={type} />
         <ListRow  text={status}/>
         <ListRow  text={deadlineDate}/>
-        <ListRow  text={note}/>
+    
         <ListRow  text={updatedDate} />
      
   

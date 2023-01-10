@@ -52,11 +52,17 @@ const initialState = {
   isEditing: false,
   editProjectId: '',
   title: '',
+  address: '',
   leader: '',
   note: 'some note here',
+  
   deadline: Date.now,
   statusOptions: ['finished', 'cancelled', 'working'],
   status: 'working',
+ 
+  typeOptions: ['kitchen remodel', 'bathroom remodel', 'full-home remodel', 'roofing', 'hardscape', 'flooring', 'interior/extorior painting', 'other projects'],
+  type: 'kitchen remodel',
+
   updatedAt: Date.now,
 
   projects: [],
@@ -69,6 +75,7 @@ const initialState = {
   searchLeader: '',
   searchNote: '',
   searchStatus: 'all',
+  searchType: 'all',
   sort: 'latest updated',
   sortOptions: ['latest updated', 'oldest updated', 'nearest deadline', 'furthest deadline'],
  
@@ -196,10 +203,12 @@ const AppProvider = ({ children }) => {
   const createProject = async () => {
     dispatch({ type: CREATE_PROJECT_BEGIN })
     try {
-      const { title, leader, note, deadline, status } = state
+      const { title, address, type, leader, note, deadline, status } = state
     
       await authFetch.post('/projects', {
         title,
+        address,
+        type,
         leader,
         note,
         deadline,
@@ -218,9 +227,9 @@ const AppProvider = ({ children }) => {
   }
 
   const getProjects = async () => {
-    const { page, searchTitle, searchLeader, searchNote, searchStatus, sort } = state
+    const { page, searchTitle, searchAddress, searchLeader, searchNote, searchStatus, searchType, sort } = state
 
-    let url = `/projects?page=${page}&status=${searchStatus}&sort=${sort}`
+    let url = `/projects?page=${page}&status=${searchStatus}&type=${searchType}&sort=${sort}`
 
  
     if (searchTitle) {
@@ -235,6 +244,11 @@ const AppProvider = ({ children }) => {
 
     if (searchNote) {
       url = url + `&searchNote=${searchNote}`
+      
+    }
+
+    if (searchAddress) {
+      url = url + `&searchAddress=${searchAddress}`
       
     }
 
@@ -274,9 +288,11 @@ const AppProvider = ({ children }) => {
     dispatch({ type: EDIT_PROJECT_BEGIN })
 
     try {
-      const { title, leader, note, deadline, status } = state
+      const { title, address, type, leader, note, deadline, status } = state
       await authFetch.patch(`/projects/${state.editProjectId}`, {
         title,
+        address,
+        type,
         leader,
         note,
         deadline,

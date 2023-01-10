@@ -17,6 +17,8 @@ const ListContainer = () => {
     searchTitle,
     searchLeader,
     searchNote,
+    searchAddress,
+    searchType,
 
     searchStatus,
   
@@ -27,7 +29,7 @@ const ListContainer = () => {
   useEffect(() => {
     getProjects()
     // eslint-disable-next-line
-  }, [page, searchTitle, searchLeader, searchNote, searchStatus,  sort])
+  }, [page, searchTitle, searchLeader, searchNote, searchStatus, searchAddress, searchType, sort])
 
   
   if (isLoading) {

@@ -13,7 +13,7 @@ const Project = ({
   _id,
   title,
   leader,
- 
+  
   deadline,
   updatedAt,
   status,
@@ -59,6 +59,8 @@ const Project = ({
         <div className='content-center'>
 
           <ProjectInfo icon={<FaUser />} text={`Leader: ${leader}`} />
+          
+        
         
           <ProjectInfo icon={<FaRegCalendarCheck />} text={`Deadline: ${deadlineDate}`} />
           

@@ -11,9 +11,9 @@ import moment from 'moment'
 
 
 const createProject = async (req, res) => {
-  const { title, leader } = req.body
+  const { title, leader, address } = req.body
 
-  if (!title || !leader) {
+  if (!title || !leader || !address) {
     throw new BadRequestError('Please provide all values')
   }
   req.body.createdBy = req.user.userId
@@ -23,7 +23,7 @@ const createProject = async (req, res) => {
 
 
 const getAllProjects = async (req, res) => {
-  const { status, sort, searchTitle, searchLeader, searchNote} = req.query
+  const { status, type, sort, searchTitle, searchLeader, searchNote, searchAddress} = req.query
 
   const queryObject = {
     createdBy: req.user.userId,
@@ -32,6 +32,10 @@ const getAllProjects = async (req, res) => {
 
   if (status && status !== 'all') {
     queryObject.status = status
+  }
+
+  if (type && type !== 'all') {
+    queryObject.type = type
   }
  
   if (searchTitle) {
@@ -50,10 +54,14 @@ const getAllProjects = async (req, res) => {
    
   }
 
+  if (searchAddress) {
+    queryObject.address = { $regex: searchAddress, $options: 'i' }
+   
+  }
+
 
   let result = Project.find(queryObject)
 
-  // chain sort conditions
 
   if (sort === 'latest updated') {
     result = result.sort('-updatedAt')
@@ -89,9 +97,9 @@ const getAllProjects = async (req, res) => {
 
 const updateProject = async (req, res) => {
   const { id: projectId } = req.params
-  const { title, leader } = req.body
+  const { title, leader, address } = req.body
 
-  if (!title || !leader) {
+  if (!title || !leader || !address) {
     throw new BadRequestError('Please provide all values')
   }
   const project = await Project.findOne({ _id: projectId })

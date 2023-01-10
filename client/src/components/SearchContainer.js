@@ -9,10 +9,12 @@ const SearchContainer = () => {
     searchTitle,
     searchLeader,
     searchNote,
-
+    searchAddress,
+    searchType,
     searchStatus,
     sort,
     sortOptions,
+    typeOptions,
     handleChange,
     clearFilters,
    
@@ -53,6 +55,15 @@ const SearchContainer = () => {
           />
 
           <FormRow
+            labelText='Search Address'
+            type='text'
+            id='searchAddress'
+            name='searchAddress'
+            value={searchAddress}
+            handleChange={handleSearch}
+          />
+
+          <FormRow
             labelText='Search Note'
             type='text'
             id='searchNote'
@@ -63,6 +74,14 @@ const SearchContainer = () => {
 
 
           {/* filter status */}
+
+          <FormRowSelect
+            labelText='type'
+            name='searchType'
+            value={searchType}
+            handleChange={handleSearch}
+            list={['all', ...typeOptions]}
+          />
 
           <FormRowSelect
             labelText='status'

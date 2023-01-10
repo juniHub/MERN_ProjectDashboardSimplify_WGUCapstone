@@ -176,13 +176,15 @@ const reducer = (state, action) => {
   if (action.type === GET_SINGLE_PROJECT) {
 
     const project = state.projects.find((project) => project._id === action.payload.id)
-    const {  _id, title, leader, note, deadline, status, updatedAt } = project
+    const {  _id, title, address, type, leader, note, deadline, status, updatedAt } = project
     return {
       
       ...state,
       isEditing: true,
       editProjectId: _id,
       title,
+      address,
+      type,
       leader,
       note,
       deadline,
@@ -195,13 +197,15 @@ const reducer = (state, action) => {
 
   if (action.type === SET_EDIT_PROJECT) {
     const project = state.projects.find((project) => project._id === action.payload.id)
-    const { _id, title, leader, note, deadline, status } = project
+    const { _id, title, address, type, leader, note, deadline, status } = project
     return {
       ...state,
 
       isEditing: true,
       editProjectId: _id,
       title,
+      address,
+      type,
       leader,
       note,
       deadline,
@@ -264,7 +268,9 @@ const reducer = (state, action) => {
       searchTitle: '',
       searchLeader: '',
       searchNote: '',
+      searchAddress: '',
       searchStatus: 'all',
+      searchType: 'all',
       sort: 'latest updated',
     }
   }
