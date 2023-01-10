@@ -73,7 +73,7 @@ const Project = ({
               className='btn global-btn'
               onClick={() => getSingleProject(_id)}
             >
-              Read more
+              See Details
             </Link>
         
             <Link

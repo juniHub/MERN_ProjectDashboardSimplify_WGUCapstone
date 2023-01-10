@@ -15,6 +15,7 @@ const List = ({
   updatedAt,
   status,
 
+
 }) => {
 
   const {  getSingleProject} = useAppContext()
@@ -49,6 +50,7 @@ const List = ({
         <ListRow  text={deadlineDate}/>
         <ListRow  text={note}/>
         <ListRow  text={updatedDate} />
+     
   
       
 

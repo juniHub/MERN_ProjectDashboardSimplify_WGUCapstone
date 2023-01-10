@@ -71,6 +71,8 @@ const initialState = {
   searchStatus: 'all',
   sort: 'latest updated',
   sortOptions: ['latest updated', 'oldest updated', 'nearest deadline', 'furthest deadline'],
+ 
+ 
 }
 
 const AppContext = React.createContext()
@@ -235,7 +237,8 @@ const AppProvider = ({ children }) => {
       url = url + `&searchNote=${searchNote}`
       
     }
- 
+
+  
  
     dispatch({ type: GET_PROJECTS_BEGIN })
     try {
@@ -340,10 +343,7 @@ const AppProvider = ({ children }) => {
         clearValues,
         createProject,
         getProjects,
-
         getSingleProject,
-    
-
         setEditProject,
         editProject,
         deleteProject,

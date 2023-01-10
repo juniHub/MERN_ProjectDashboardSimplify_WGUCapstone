@@ -56,6 +56,7 @@ const AddProject = () => {
         {showAlert && <Alert />}
         <div className='form-center'>
           {/* title */}
+
           <FormRowArea
             type='text'
             labelText='Project Title'
@@ -71,9 +72,8 @@ const AddProject = () => {
             value={leader}
             handleChange={handleProjectInput}
           />
+
           {/* Note  */}
-
-
           <FormRowArea
             type='text'
             labelText='Notes'

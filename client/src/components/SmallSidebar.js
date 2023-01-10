@@ -15,7 +15,7 @@ const SmallSidebar = () => {
         }
       >
         <div className='content'>
-          <button type='button' className='close-btn' onClick={toggleSidebar}>
+          <button type='button' aria-label="close-btn" className='close-btn' onClick={toggleSidebar}>
             <FaTimes />
           </button>
           <header>

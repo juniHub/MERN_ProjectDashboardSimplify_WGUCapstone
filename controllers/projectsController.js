@@ -8,6 +8,8 @@ import {
 import checkPermissions from '../utils/checkPermissions.js'
 import mongoose from 'mongoose'
 import moment from 'moment'
+
+
 const createProject = async (req, res) => {
   const { title, leader } = req.body
 
@@ -21,7 +23,7 @@ const createProject = async (req, res) => {
 
 
 const getAllProjects = async (req, res) => {
-  const { status, sort, searchTitle, searchLeader, searchNote } = req.query
+  const { status, sort, searchTitle, searchLeader, searchNote} = req.query
 
   const queryObject = {
     createdBy: req.user.userId,
@@ -67,6 +69,7 @@ const getAllProjects = async (req, res) => {
     result = result.sort('-deadline')
   }
 
+ 
 
   // setup pagination
   const page = Number(req.query.page) || 1
@@ -132,8 +135,8 @@ const showStats = async (req, res) => {
     { $group: { _id: '$status', count: { $sum: 1 } } },
   ])
   stats = stats.reduce((acc, curr) => {
-    const { _id: title, count } = curr
-    acc[title] = count
+    const { _id: status, count } = curr
+    acc[status] = count
     return acc
   }, {})
 
@@ -148,12 +151,12 @@ const showStats = async (req, res) => {
     { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
     {
       $group: {
-        _id: { year: { $year: '$updatedAt' }, month: { $month: '$updatedAt' } },
+        _id: { year: { $year: '$deadline' }, month: { $month: '$deadline' } }, 
         count: { $sum: 1 },
       },
     },
     { $sort: { '_id.year': -1, '_id.month': -1 } },
-    { $limit: 12 },
+  
   ])
 
 

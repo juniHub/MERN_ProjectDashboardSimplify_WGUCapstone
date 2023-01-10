@@ -9,7 +9,7 @@ const ProjectSchema = new mongoose.Schema(
     },
     leader: {
       type: String,
-      required: [true, 'Please provide project leader'],
+      required: [true, 'Please provide project manager'],
       maxlength: 100,
     },
     status: {

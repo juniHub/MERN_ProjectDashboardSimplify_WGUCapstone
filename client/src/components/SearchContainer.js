@@ -32,11 +32,12 @@ const SearchContainer = () => {
       <form className='form'>
         <h4>Search Project</h4>
         <div className='form-center'>
-          {/* search position */}
+  
 
           <FormRow
             labelText='Search Title'
             type='text'
+            id='searchTitle'
             name='searchTitle'
             value={searchTitle}
             handleChange={handleSearch}
@@ -45,6 +46,7 @@ const SearchContainer = () => {
           <FormRow
             labelText='Search Leader'
             type='text'
+            id='searchLeader'
             name='searchLeader'
             value={searchLeader}
             handleChange={handleSearch}
@@ -53,13 +55,15 @@ const SearchContainer = () => {
           <FormRow
             labelText='Search Note'
             type='text'
+            id='searchNote'
             name='searchNote'
             value={searchNote}
             handleChange={handleSearch}
           />
 
 
-          {/* search by status */}
+          {/* filter status */}
+
           <FormRowSelect
             labelText='status'
             name='searchStatus'
@@ -67,15 +71,16 @@ const SearchContainer = () => {
             handleChange={handleSearch}
             list={['all', ...statusOptions]}
           />
-          {/* search by deadline */}
-      
+            
           {/* sort */}
+
           <FormRowSelect
             name='sort'
             value={sort}
             handleChange={handleSearch}
             list={sortOptions}
           />
+          
           <button
             className='btn btn-block btn-danger'
             disabled={isLoading}
