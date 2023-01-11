@@ -48,10 +48,10 @@ const AddProject = () => {
     <Wrapper>
       
          <Link
-              to='/'
+              to='/all-projects'
               className='btn global-btn'
             >
-              Back Home
+              Back to All Projects
           </Link>
           
       <form className='form'>
@@ -59,29 +59,30 @@ const AddProject = () => {
         {showAlert && <Alert />}
         <div className='form-center'>
           {/* title */}
-          <FormRowArea
+          <FormRow
             type='text'
-            labelText='Project Title/Customer Name'
+            labelText='Title/Customer Name'
             name='title'
             value={title}
             handleChange={handleProjectInput}
           />
-          {/* leader */}
-          <FormRowArea
+          {/* address */}
+          <FormRow
             type='text'
-            labelText='Project Manager'
-            name='leader'
-            value={leader}
-            handleChange={handleProjectInput}
-          />
-            {/* address */}
-            <FormRowArea
-            type='text'
-            labelText='Project Address'
+            labelText='Address'
             name='address'
             value={address}
             handleChange={handleProjectInput}
           />
+          {/* leader */}
+          <FormRow
+            type='text'
+            labelText='Leader/Manager'
+            name='leader'
+            value={leader}
+            handleChange={handleProjectInput}
+          />
+       
           {/* type */}
             <FormRowSelect
             name='type'
@@ -90,23 +91,6 @@ const AddProject = () => {
             list={typeOptions}
           />
 
-
-          {/* Note  */}
-          <FormRowArea
-            type='text'
-            labelText='Notes'
-            name='note'
-            value={note}
-            handleChange={handleProjectInput}
-          />
-
-           {/* status */}
-          <FormRowSelect
-            name='status'
-            value={status}
-            handleChange={handleProjectInput}
-            list={statusOptions}
-          />
           {/* deadline */}
           <FormRow
             type='datetime-local'
@@ -116,6 +100,33 @@ const AddProject = () => {
             handleChange={handleProjectInput}
            
           />
+
+           {/* status */}
+          <FormRowSelect
+            name='status'
+            value={status}
+            handleChange={handleProjectInput}
+            list={statusOptions}
+          />
+
+          
+         </div>
+
+
+         <div className='form-row-area'>
+        
+          {/* Note  */}
+          <FormRowArea
+            type='text'
+            labelText='Notes'
+            name='note'
+            value={note}
+            handleChange={handleProjectInput}
+          />
+
+          </div>
+
+
           {/* btn container */}
           <div className='btn-container'>
             <button
@@ -136,7 +147,7 @@ const AddProject = () => {
               clear
             </button>
           </div>
-        </div>
+        
       </form>
     </Wrapper>
   )

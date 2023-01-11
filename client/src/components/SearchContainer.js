@@ -37,7 +37,7 @@ const SearchContainer = () => {
   
 
           <FormRow
-            labelText='Search Title'
+            labelText='Search Title/Customer'
             type='text'
             id='searchTitle'
             name='searchTitle'
@@ -46,7 +46,7 @@ const SearchContainer = () => {
           />
 
           <FormRow
-            labelText='Search Leader'
+            labelText='Search Leader/Manager'
             type='text'
             id='searchLeader'
             name='searchLeader'
@@ -64,7 +64,7 @@ const SearchContainer = () => {
           />
 
           <FormRow
-            labelText='Search Note'
+            labelText='Search Notes'
             type='text'
             id='searchNote'
             name='searchNote'

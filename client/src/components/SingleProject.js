@@ -17,6 +17,7 @@ const SingleProject = () => {
   const { 
 
   editProjectId,
+  
   title,
   address,
   type,
@@ -24,26 +25,27 @@ const SingleProject = () => {
   note,
   deadline,
   updatedAt,
-  status, setEditProject, deleteProject } = useAppContext()
+  status, setEditProject} = useAppContext()
   
  
     let updatedDate = moment(updatedAt)
     updatedDate = updatedDate.local().format('MMM Do, YYYY')
   
     let deadlineDate = moment(deadline)
-    deadlineDate = deadlineDate.local().format('ddd, MMM Do YYYY, h:mm:ss a')
+    deadlineDate = deadlineDate.local().format('ddd, MMM Do YYYY, h:mm:ss A')
   
   
     return (
       <>
 
-      <Link
-              to='/'
+        <Link
+              to='/all-projects'
               className='btn global-btn'
             
             >
-              Back Home
-      </Link>
+              Back to All Projects
+          </Link>
+   
 
       <Wrapper>
 
@@ -62,11 +64,13 @@ const SingleProject = () => {
         <div className='content'>
           <div className='content-center'>
 
-            <ProjectInfo icon={<FaUser />} text={`Leader: ${leader}`} />
 
-            <ProjectInfo icon={<FaHome />} text={`Project Address: ${address}`} />
+            <ProjectInfo icon={<FaHome />} text={`Address: ${address}`} />
 
-            <ProjectInfo icon={<FaRulerCombined />} text={`Project Type: ${type}`} />
+            <ProjectInfo icon={<FaRulerCombined />} text={`Type: ${type}`} />
+
+            
+            <ProjectInfo icon={<FaUser />} text={`Leader/Manager: ${leader}`} />
           
             <ProjectInfo icon={<FaRegCalendarCheck />} text={`Deadline: ${deadlineDate}`} />
             
@@ -79,14 +83,7 @@ const SingleProject = () => {
           <footer>
           <div className='actions'>
 
-          <Link
-              to='/all-projects'
-              className='btn global-btn'
-            
-            >
-              All Projects
-          </Link>
-   
+  
             <Link
               to='/add-project'
               className='btn edit-btn'
@@ -94,13 +91,7 @@ const SingleProject = () => {
             >
               Edit
             </Link>
-            <button
-              type='button'
-              className='btn delete-btn'
-              onClick={() => deleteProject(editProjectId)}
-            >
-              Delete
-            </button>
+          
           </div>
         </footer>
          

@@ -10,9 +10,9 @@ const ChartsContainer = () => {
   const { monthlyProjects: data } = useAppContext()
   return (
     <Wrapper>
-      <h4>Monthly Projects Group By Deadline</h4>
+      <h4>Monthly Projects By Deadline</h4>
       <button type='button' onClick={() => setCardView(!cardView)}>
-        {cardView ?  'Card View': 'Area Chart' }
+        {cardView ?  'Click for Area Chart': 'Click for Card View' }
       </button>
       {cardView? <CardView data={data} /> : <AreaChart data={data} />}
     </Wrapper>

@@ -54,7 +54,7 @@ const initialState = {
   title: '',
   address: '',
   leader: '',
-  note: 'some note here',
+  note: '',
   
   deadline: Date.now,
   statusOptions: ['finished', 'cancelled', 'working'],

@@ -100,10 +100,6 @@ const Wrapper = styled.article`
     height: 30px;
   }
 
-
-
-
-
   .edit-btn {
     color: var(--green-dark);
     background: var(--green-light);
@@ -119,6 +115,8 @@ const Wrapper = styled.article`
   &:hover .actions {
     visibility: visible;
   }
+
+  
 `
 
 export default Wrapper

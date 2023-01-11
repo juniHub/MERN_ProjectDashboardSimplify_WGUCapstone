@@ -38,7 +38,7 @@ const ProjectSchema = new mongoose.Schema(
     },
     note: {
       type: String,
-      default: 'Some notes here',
+  
       
     },
     createdBy: {

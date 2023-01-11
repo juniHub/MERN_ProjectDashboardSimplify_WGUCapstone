@@ -45,6 +45,31 @@ const Wrapper = styled.section`
     background: var(--black);
   }
   
+  .action{
+    border: solid 1px #000;
+    padding: 0.5rem;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    letter-spacing: var(--letterSpacing);
+    cursor: pointer;
+    height: 30px;
+  }
+
+  .edit-btn {
+    color: var(--green-dark);
+    background: var(--green-light);
+    margin-right: 0.5rem;
+  }
+
+  .delete-btn {
+    color: var(--red-dark);
+    background: var(--red-light);
+  }
+  &:hover .actions {
+    visibility: visible;
+  }
 
   @media (min-width: 320px) {
  

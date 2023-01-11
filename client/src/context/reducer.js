@@ -124,10 +124,12 @@ const reducer = (state, action) => {
       isEditing: false,
       editProjectId: '',
       title: '',
+      address: '',
       leader: '',
       note: '',
       deadline: Date.now,
       status: 'working',
+      type: 'kitchen remodel'
     }
 
     return {

@@ -9,20 +9,16 @@ const LabelRow = () => {
         
         <div className='list'>
            <div className='list-center'>
-           
-      
-            <ListRow  text="Title"/>
-            <ListRow  text="Leader" />
+  
+            <ListRow  text="Title/Customer"/>
             <ListRow  text="Address" />
-            <ListRow  text="Type" />
+             <ListRow  text="Type" />
+           
+         
             <ListRow  text="Status"/>
             <ListRow  text="Deadline"/>
-         
-            <ListRow  text="Updated" />
-      
-          
-    
-    
+            <ListRow  text="Action"/>
+ 
             </div>
         </div>  
         </Wrapper>  

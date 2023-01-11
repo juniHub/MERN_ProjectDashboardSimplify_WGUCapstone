@@ -2,7 +2,7 @@
 //import momentTimezone from "moment-timezone"
 import moment from "moment"
 
-import { FaRegCalendarCheck, FaUser} from 'react-icons/fa'
+import { FaRegCalendarCheck, FaHome} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useAppContext } from '../context/appContext'
 import Wrapper from '../assets/wrappers/Project'
@@ -12,8 +12,7 @@ import ProjectInfo from './ProjectInfo'
 const Project = ({
   _id,
   title,
-  leader,
-  
+  address,
   deadline,
   updatedAt,
   status,
@@ -58,7 +57,7 @@ const Project = ({
       <div className='content'>
         <div className='content-center'>
 
-          <ProjectInfo icon={<FaUser />} text={`Leader: ${leader}`} />
+          <ProjectInfo icon={<FaHome />} text={`Address: ${address}`} />
           
         
         

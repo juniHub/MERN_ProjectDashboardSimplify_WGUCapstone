@@ -25,6 +25,13 @@ const Wrapper = styled.section`
     margin-bottom: 0;
    
   }
+
+  .form-row-area {
+    margin: 1rem 0;
+  }
+
+
+
   .form-center {
     display: grid;
     row-gap: 0.5rem;

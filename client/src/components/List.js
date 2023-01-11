@@ -13,18 +13,15 @@ const List = ({
   address,
 
   deadline,
-  updatedAt,
+  
   status,
   type,
 
 
-}) => {
-
-  const {  getSingleProject} = useAppContext()
+})  => {
+  const { setEditProject, deleteProject, getSingleProject} = useAppContext()
   
-  let updatedDate = moment(updatedAt)
-  updatedDate = updatedDate.local().format('MMM Do, YYYY')
-
+ 
   let deadlineDate = moment(deadline)
   deadlineDate = deadlineDate.local().format('ddd, MMM Do YYYY, h:mm:ss a')
 
@@ -47,19 +44,41 @@ const List = ({
 
           </Link> 
        
-        <ListRow  text={leader} />
+      
         <ListRow  text={address} />
         <ListRow  text={type} />
+      
+       
         <ListRow  text={status}/>
         <ListRow  text={deadlineDate}/>
-    
-        <ListRow  text={updatedDate} />
-     
-  
-      
 
+        <div className='action'>
+
+        
+
+        <Link
+              to='/add-project'
+              className='btn edit-btn'
+              onClick={() => setEditProject(_id)}
+            >
+              Edit
+        </Link>
+        <button
+              type='button'
+              className='btn delete-btn'
+              onClick={() => deleteProject(_id)}
+            >
+              Delete
+        </button>
 
         </div>
+
+    
+  
+        </div>
+
+       
+
     </div>  
     </Wrapper>  
   )
