@@ -2,7 +2,7 @@
 //import momentTimezone from "moment-timezone"
 import moment from "moment"
 
-import { FaRegCalendarCheck, FaHome} from 'react-icons/fa'
+import { FaRegCalendarCheck, FaRulerCombined } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useAppContext } from '../context/appContext'
 import Wrapper from '../assets/wrappers/Project'
@@ -13,8 +13,9 @@ const Project = ({
   _id,
   title,
   address,
+  type,
   deadline,
-  updatedAt,
+  
   status,
  
 
@@ -22,8 +23,7 @@ const Project = ({
   const { setEditProject, deleteProject, getSingleProject} = useAppContext()
 
 
-  let updatedDate = moment(updatedAt)
-  updatedDate = updatedDate.local().format('MMM Do, YYYY')
+ 
 
   let deadlineDate = moment(deadline)
   deadlineDate = deadlineDate.local().format('ddd, MMM Do YYYY, hh:mm:ss A')
@@ -49,7 +49,7 @@ const Project = ({
         <div className='info'>
           
          <h5>{title}</h5>
-         <p>Updated: {updatedDate}</p>
+         <p>Address: {address}</p>
         
           <div className={`status ${status}`}>{status}</div>
         </div>
@@ -57,8 +57,8 @@ const Project = ({
       <div className='content'>
         <div className='content-center'>
 
-          <ProjectInfo icon={<FaHome />} text={`Address: ${address}`} />
           
+          <ProjectInfo icon={<FaRulerCombined />} text={`Type: ${type}`} />
         
         
           <ProjectInfo icon={<FaRegCalendarCheck />} text={`Deadline: ${deadlineDate}`} />
