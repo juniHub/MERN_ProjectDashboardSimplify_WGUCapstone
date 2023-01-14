@@ -2,7 +2,7 @@
 //import momentTimezone from "moment-timezone"
 import moment from "moment"
 
-import { FaRegClipboard, FaHome, FaRulerCombined, FaRegCalendarCheck, FaUser } from 'react-icons/fa'
+import { FaRegClipboard, FaCalendarAlt, FaRulerCombined, FaRegCalendarCheck, FaUser } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 import { useAppContext } from '../context/appContext'
@@ -56,7 +56,7 @@ const SingleProject = () => {
           
            <h5>{title}</h5>
           
-           <p>Updated: {updatedDate}</p>
+           <p>Address: {address}</p>
         
             <div className={`status ${status}`}>{status}</div>
           </div>
@@ -64,20 +64,17 @@ const SingleProject = () => {
         <div className='content'>
           <div className='content-center'>
 
-
-            <ProjectInfo icon={<FaHome />} text={`Address: ${address}`} />
-
             <ProjectInfo icon={<FaRulerCombined />} text={`Type: ${type}`} />
 
-            
+            <ProjectInfo icon={<FaRegCalendarCheck />} text={`ETC: ${deadlineDate}`} />
+
             <ProjectInfo icon={<FaUser />} text={`Leader/Manager: ${leader}`} />
-          
-            <ProjectInfo icon={<FaRegCalendarCheck />} text={`Deadline: ${deadlineDate}`} />
-            
+
+            <ProjectInfo icon={<FaCalendarAlt />} text={`Updated: ${updatedDate}`} />
+
             <ProjectInfo icon={<FaRegClipboard />} text={`Note: ${note}`} />
-  
+
         
-    
           </div>
 
           <footer>

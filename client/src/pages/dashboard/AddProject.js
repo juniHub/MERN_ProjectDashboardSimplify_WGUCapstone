@@ -95,7 +95,7 @@ const AddProject = () => {
           <FormRow
             type='datetime-local'
             name='deadline'
-            labelText='deadline'
+            labelText='Estimate to Complete (ETC)'
             value={deadline}
             handleChange={handleProjectInput}
            

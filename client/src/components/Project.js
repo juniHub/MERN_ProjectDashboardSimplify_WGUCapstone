@@ -61,7 +61,7 @@ const Project = ({
           <ProjectInfo icon={<FaRulerCombined />} text={`Type: ${type}`} />
         
         
-          <ProjectInfo icon={<FaRegCalendarCheck />} text={`Deadline: ${deadlineDate}`} />
+          <ProjectInfo icon={<FaRegCalendarCheck />} text={`ETC: ${deadlineDate}`} />
           
           
   

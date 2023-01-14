@@ -70,10 +70,10 @@ const getAllProjects = async (req, res) => {
     result = result.sort('updatedAt')
   }
 
-  if (sort === 'nearest deadline') {
+  if (sort === 'nearest ETC') {
     result = result.sort('deadline')
   }
-  if (sort === 'furthest deadline') {
+  if (sort === 'furthest ETC') {
     result = result.sort('-deadline')
   }
 

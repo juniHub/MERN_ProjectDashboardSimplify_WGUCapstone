@@ -16,8 +16,8 @@ const LabelRow = () => {
            
          
             <ListRow  text="Status"/>
-            <ListRow  text="Deadline"/>
-            <ListRow  text="Action"/>
+            <ListRow  text="ETC"/>
+            <ListRow  text="Actions"/>
  
             </div>
         </div>  

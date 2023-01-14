@@ -77,7 +77,7 @@ const initialState = {
   searchStatus: 'all',
   searchType: 'all',
   sort: 'latest updated',
-  sortOptions: ['latest updated', 'oldest updated', 'nearest deadline', 'furthest deadline'],
+  sortOptions: ['latest updated', 'oldest updated', 'nearest ETC', 'furthest ETC'],
  
  
 }
