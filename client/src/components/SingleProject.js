@@ -28,7 +28,7 @@ const SingleProject = () => {
   status, setEditProject} = useAppContext()
   
  
-    let updatedDate = moment(updatedAt)
+    let updatedDate = moment.utc(updatedAt)
     updatedDate = updatedDate.local().format('MMM Do, YYYY, h:mm:ss A')
   
     let deadlineDate = moment.utc(deadline)

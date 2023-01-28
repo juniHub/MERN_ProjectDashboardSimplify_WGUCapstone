@@ -9,7 +9,7 @@ const List = ({
 
   _id,
   title,
-  leader,
+ 
   address,
 
   deadline,
@@ -22,7 +22,7 @@ const List = ({
   const { setEditProject, deleteProject, getSingleProject} = useAppContext()
   
  
-  let deadlineDate = moment(deadline)
+  let deadlineDate = moment.utc(deadline)
   deadlineDate = deadlineDate.local().format('ddd, MMM Do YYYY, h:mm:ss A')
 
 

@@ -25,7 +25,7 @@ const Project = ({
 
  
 
-  let deadlineDate = moment(deadline)
+  let deadlineDate = moment.utc(deadline)
   deadlineDate = deadlineDate.local().format('ddd, MMM Do YYYY, hh:mm:ss A')
 
 
