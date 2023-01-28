@@ -31,7 +31,7 @@ const SingleProject = () => {
     let updatedDate = moment(updatedAt)
     updatedDate = updatedDate.local().format('MMM Do, YYYY, h:mm:ss A')
   
-    let deadlineDate = moment(deadline)
+    let deadlineDate = moment.utc(deadline)
     deadlineDate = deadlineDate.local().format('ddd, MMM Do YYYY, h:mm:ss A')
   
   
