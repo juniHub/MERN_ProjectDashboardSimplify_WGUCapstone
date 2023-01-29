@@ -9,15 +9,17 @@ const Profile = () => {
   const [name, setName] = useState(user?.name)
   const [email, setEmail] = useState(user?.email)
   const [lastName, setLastName] = useState(user?.lastName)
+
+  const [password, setPassword] = useState(user?.password)
  
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!name || !email || !lastName ) {
+    if (!name || !email || !lastName) {
       displayAlert()
       return
     }
-    updateUser({ name, email, lastName })
+    updateUser({ name, email, lastName, password })
   }
 
   return (
@@ -28,6 +30,7 @@ const Profile = () => {
         <div className='form-center'>
           <FormRow
             type='text'
+            labelText='full name'
             name='name'
             value={name}
             handleChange={(e) => setName(e.target.value)}
@@ -44,6 +47,13 @@ const Profile = () => {
             name='email'
             value={email}
             handleChange={(e) => setEmail(e.target.value)}
+          />
+
+          <FormRow
+            type='password'
+            name='password'
+            value={password}
+            handleChange={(e) => setPassword(e.target.value)}
           />
       
           <button className='btn btn-block' type='submit' disabled={isLoading}>

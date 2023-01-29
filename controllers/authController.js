@@ -19,8 +19,8 @@ const register = async (req, res) => {
     user: {
       email: user.email,
       lastName: user.lastName,
-     
       name: user.name,
+      password: user.password,
     },
     token,
   
@@ -45,8 +45,8 @@ const login = async (req, res) => {
   res.status(StatusCodes.OK).json({ user, token })
 }
 const updateUser = async (req, res) => {
-  const { email, name, lastName} = req.body
-  if (!email || !name || !lastName ) {
+  const { email, name, lastName, password} = req.body
+  if (!email || !name || !lastName) {
     throw new BadRequestError('Please provide all values')
   }
   const user = await User.findOne({ _id: req.user.userId })
@@ -54,6 +54,7 @@ const updateUser = async (req, res) => {
   user.email = email
   user.name = name
   user.lastName = lastName
+  user.password = password
  
 
   await user.save()
